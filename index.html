@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="buttonContainer">
+        <h1>Create Shape Here</h1>
+        <input type="text" placeholder="Insert Height">
+        <button class="buttonStyle" id="genShape">Generate Square</button>
+        <input type="text" placeholder="Insert Height">
+        <br>
+        <input type="text" placeholder="Insert Width">
+        <button class="buttonStyle" id="genShape">Generate Rectangle</button>
+        <input type="text" placeholder="Insert Radius">
+        <button class="buttonStyle" id="genShape">Generate Circle</button>
+        <input type="text" placeholder="Insert Height">
+        <button class="buttonStyle" id="genShape">Generate Triangle</button>
+    </div>
+        <div class="sidepanel">
+            <h1>Shape Details</h1>
+            <p id="name">Shape Name:</p>
+            <p id="width">Width:</p>
+            <p id="height">Height:</p>
+            <p id="radius">Radius:</p>
+            <p id="area">Area:</p>
+            <p id="perimeter">Perimeter:</p>
+        </div>
+        <div class="shapeContainer">
+            <div class="triangle"></div>
+            <div class="square"></div>
+            <div class="rectangle"></div>
+            <div class="circle"></div>
+        </div>
+
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="scripts.js"></script>  
+</body>
+</html>
