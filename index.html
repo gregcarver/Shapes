@@ -10,16 +10,16 @@
 <body>
     <div class="buttonContainer">
         <h1>Create Shape Here</h1>
-        <input type="text" placeholder="Insert Height">
-        <button class="buttonStyle" id="genShape">Generate Square</button>
-        <input type="text" placeholder="Insert Height">
+        <input type="text" placeholder="Insert Sidelength" id="SlValue">
+        <button class="buttonStyle" id="genSquare">Generate Square</button>
+        <input type="text" placeholder="Insert Height" id="rectHeight">
         <br>
-        <input type="text" placeholder="Insert Width">
-        <button class="buttonStyle" id="genShape">Generate Rectangle</button>
+        <input type="text" placeholder="Insert Width" id="rectWidth">
+        <button class="buttonStyle" id="genRectangle" class="rectangle">Generate Rectangle</button>
         <input type="text" placeholder="Insert Radius">
-        <button class="buttonStyle" id="genShape">Generate Circle</button>
+        <button class="buttonStyle" id="genCircle">Generate Circle</button>
         <input type="text" placeholder="Insert Height">
-        <button class="buttonStyle" id="genShape">Generate Triangle</button>
+        <button class="buttonStyle" id="genTriangle">Generate Triangle</button>
     </div>
         <div class="sidepanel">
             <h1>Shape Details</h1>
@@ -30,11 +30,8 @@
             <p id="area">Area:</p>
             <p id="perimeter">Perimeter:</p>
         </div>
-        <div class="shapeContainer">
-            <div class="triangle"></div>
-            <div class="square"></div>
-            <div class="rectangle"></div>
-            <div class="circle"></div>
+        <div id="shapeContainer">
+
         </div>
 
   <script
