@@ -20,18 +20,29 @@ class Shapes{
         this.shape.className=name
         this.perimeter=perimeter;
         this.sideLength=sideLength
+        this.shape.addEventListener('click',this.describe.bind(this));
+        this.shape.addEventListener('dblclick',this.removeShape.bind(this));
+
+         
     }
     describe(){
-    $("#name").append(this.name)
-    $("#width").append(this.width)
-    $("#height").append(this.height)
-    $("#radius").append(this.radius)
-    $("#area").append(this.area)
-    $("#perimeter").append(this.perimeter)
-    $('#sideLength').append(this.sideLength)
+    $("#name").html("Shape Name:"+this.name)
+    $("#width").html("Width:"+this.width)
+    $("#height").html("Height:"+this.height)
+    $("#radius").html("Radius:"+this.radius)
+    $("#area").html("Area:"+this.area)
+    $("#perimeter").html("Perimeter:"+this.perimeter)
+    $('#sideLength').html("Side Length:"+this.sideLength)
 }
     draw(){
         $('#shapeContainer').append(this.shape)
+        // let left=randomXY();
+        // let top=randomXY();
+        
+    }
+    removeShape(){
+        console.log('removed')
+        this.shape.remove();
     }
 }
 
@@ -41,8 +52,12 @@ class Rectangle extends Shapes {
         super('Rectangle');
         this.height=height;
         this.width=width;
-        this.shape.style.width = width;
-        this.shape.style.height = height;
+        this.shape.style.width = width+"px";
+        this.shape.style.height = height+"px";
+        this.shape.style.top=randomXY()+"px";
+        this.shape.style.left=randomXY()+"px";
+
+        
     }
     get area(){
        return this.height*this.width;
@@ -50,8 +65,8 @@ class Rectangle extends Shapes {
 }
 //Generate Rectangle
 $('#genRectangle').click(function(){
-    let height = document.getElementById("rectHeight").value+"px";
-    let width = document.getElementById("rectWidth").value+"px";
+    let height = document.getElementById("rectHeight").value;
+    let width = document.getElementById("rectWidth").value;
     const rectangle= new Rectangle(height,width);
     console.log(rectangle)
     rectangle.draw()
@@ -61,14 +76,17 @@ $('#genRectangle').click(function(){
 
 // //Square Class
 class Square extends Shapes {
-    constructor(height,width,sideLength,shape){
+    constructor(sideLength,shape){
         super('Square');
-        this.sideLength=height,width;
-        this.shape.style.width = sideLength;
-        this.shape.style.height = sideLength
+        this.sideLength=sideLength
+        this.shape.style.width = sideLength+"px"
+        this.shape.style.height = sideLength+"px"
+        this.shape.style.top=randomXY()+"px";
+        this.shape.style.left=randomXY()+"px";
+
     }
     get area(){
-       return this.sideLength*this.sideLength
+       return this.sideLength*this.sideLength+"px"
     }
 }
 //Generate Square
@@ -77,7 +95,8 @@ $('#genSquare').click(function(){
     const square= new Square(sideLength);
     console.log(square)
     square.draw()
-    square.describe()    
+    square.describe()
+    $("#SlValue").empty()    
 });
 
 // //Circle Class
@@ -89,6 +108,8 @@ class Circle extends Shapes {
         this.perimeter=2*Math.PI*radius;
         this.shape.style.width = 2*radius+"px";
         this.shape.style.height=2*radius+"px";
+        this.shape.style.top=randomXY()+"px";
+        this.shape.style.left=randomXY()+"px";
     }
     get area(){
        return Math.PI*(this.radius*this.radius)
@@ -100,7 +121,8 @@ $('#genCircle').click(function(){
     const circle= new Circle(radius);
     console.log(circle)
     circle.draw()
-    circle.describe()    
+    circle.describe()
+    $("#radValue").empty()    
 });
 // //Triangle Class
 class Triangle extends Shapes {
@@ -108,26 +130,32 @@ class Triangle extends Shapes {
         super('Triangle');
         this.height=height;
         this.width=height;
-      //  console.log(Math.PI*(radius*radius))
-      //  this.shape.style.width = 2*radius+"px";
         this.shape.style.borderBottom=height+"px solid yellow";
         this.shape.style.borderRight=height+"px solid lightblue";
+        this.shape.style.top=randomXY()+"px";
+        this.shape.style.left=randomXY()+"px";
     }
     get area(){
        return 0.5*(this.height)*(this.height)
     }
 }
-//Generate Circle
+//Generate Triangle
 $('#genTriangle').click(function(){
     let height = document.getElementById("triValue").value;
     const triangle= new Triangle(height);
     console.log(triangle)
     triangle.draw()
-    triangle.describe()    
+    triangle.describe()
+        
 });
-
-
-
+function randomXY(){
+    let ran= Math.floor(Math.random()*600);
+    return ran;
+}
+// $(this).on("click",function(){
+//     console.log("clicked")
+//     this.shape.describe();
+// });
 
 
 
