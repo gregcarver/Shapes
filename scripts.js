@@ -26,32 +26,43 @@ class Shapes{
          
     }
     describe(){
-    $("#name").html("Shape Name:"+this.name)
-    $("#width").html("Width:"+this.width)
-    $("#height").html("Height:"+this.height)
-    $("#radius").html("Radius:"+this.radius)
-    $("#area").html("Area:"+this.area)
-    $("#perimeter").html("Perimeter:"+this.perimeter)
-    $('#sideLength').html("Side Length:"+this.sideLength)
+    $("#name").html("Shape Name: "+this.name)
+    $("#width").html("Width: "+this.width)
+    $("#height").html("Height: "+this.height)
+    $("#radius").html("Radius: "+this.radius)
+    $("#area").html("Area: "+this.area)
+    $("#perimeter").html("Perimeter: "+this.perimeter)
+    $('#sideLength').html("Side Length: "+this.sideLength)
 }
     draw(){
-        $('#shapeContainer').append(this.shape)
-        // let left=randomXY();
-        // let top=randomXY();
-        
+        $('#shapeContainer').append(this.shape) 
     }
     removeShape(){
-        console.log('removed')
         this.shape.remove();
+        $("#name").html("Shape Name:")
+        $("#width").html("Width: ")
+        $("#height").html("Height: ")
+        $("#radius").html("Radius: ")
+        $("#area").html("Area: ")
+        $("#perimeter").html("Perimeter: ")
+        $('#sideLength').html("Side Length: ")
     }
+    // clear(){
+    //     if(".$inputs" != ''){
+    //         (".$inputs").value=''
+    //     }
+    // }
 }
 
 // //Rectangle Class
 class Rectangle extends Shapes {
-    constructor(height,width,shape){
+    constructor(height,width,shape,radius,perimeter,sideLength){
         super('Rectangle');
         this.height=height;
         this.width=width;
+        this.radius="N/A"
+        this.perimeter="N/A"
+        this.sideLength="N/A"
         this.shape.style.width = width+"px";
         this.shape.style.height = height+"px";
         this.shape.style.top=randomXY()+"px";
@@ -71,13 +82,18 @@ $('#genRectangle').click(function(){
     console.log(rectangle)
     rectangle.draw()
     rectangle.describe()
-    
+    document.getElementById("rectHeight").value= '';
+    document.getElementById("rectWidth").value= '';  
 });
 
 // //Square Class
 class Square extends Shapes {
     constructor(sideLength,shape){
         super('Square');
+        this.width=sideLength
+        this.height=sideLength
+        this.radius="N/A"
+        this.perimeter="N/A"
         this.sideLength=sideLength
         this.shape.style.width = sideLength+"px"
         this.shape.style.height = sideLength+"px"
@@ -96,13 +112,16 @@ $('#genSquare').click(function(){
     console.log(square)
     square.draw()
     square.describe()
-    $("#SlValue").empty()    
+    document.getElementById("SlValue").value= ''; 
 });
 
 // //Circle Class
 class Circle extends Shapes {
     constructor(radius,perimeter,area,shape){
         super('Circle');
+        this.width="N/A"
+        this.height="N/A"
+        this.sideLength="N/A"
         this.radius=radius;
         console.log(Math.PI*(radius*radius))
         this.perimeter=2*Math.PI*radius;
@@ -122,7 +141,7 @@ $('#genCircle').click(function(){
     console.log(circle)
     circle.draw()
     circle.describe()
-    $("#radValue").empty()    
+    document.getElementById("SlValue").value= ''; 
 });
 // //Triangle Class
 class Triangle extends Shapes {
@@ -130,6 +149,9 @@ class Triangle extends Shapes {
         super('Triangle');
         this.height=height;
         this.width=height;
+        this.radius="N/A"
+        this.perimeter="N/A"
+        this.sideLength="N/A"
         this.shape.style.borderBottom=height+"px solid yellow";
         this.shape.style.borderRight=height+"px solid lightblue";
         this.shape.style.top=randomXY()+"px";
@@ -146,7 +168,7 @@ $('#genTriangle').click(function(){
     console.log(triangle)
     triangle.draw()
     triangle.describe()
-        
+    document.getElementById("triValue").value= '';    
 });
 function randomXY(){
     let ran= Math.floor(Math.random()*600);
